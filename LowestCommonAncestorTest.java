@@ -52,14 +52,15 @@ public class LowestCommonAncestorTest {
         Node b = new Node(2);
         Node c = new Node(3);
         Node d = new Node(4);
-        
+
         a.left = b;
-        a.right= c;
-        b.left =d;
-        
+        a.right = c;
+        b.left = d;
+
         // here a is the LCA and also a node
-//        System.out.println("the expected data is"+d.val);
-//        System.out.println("the returned data"+lca.LowestCommonAncestor(a, b, d).val);
+        // System.out.println("the expected data is"+d.val);
+        // System.out.println("the returned data"+lca.LowestCommonAncestor(a, b,
+        // d).val);
         assertEquals(b, lca.LowestCommonAncestor(a, b, d));
     }
 
@@ -68,6 +69,36 @@ public class LowestCommonAncestorTest {
     public void testEmptyBinaryTree() {
         Node a = null;
         assertEquals(null, lca.LowestCommonAncestor(a, null, null));
+
+    }
+
+    // DAG tree structure
+
+    // --------1
+    // -----2------3
+    // ---7-- ----4 5 6
+
+    Graph graph = new Graph(7);
+
+    // test lca when there is no known path between two nodes(therefore there is no
+    // LCA)
+    @Test
+    public void testNoKnownPath() {
+        dagNode a = new dagNode(1);
+        dagNode b = new dagNode(2);
+        Node[] result = graph.DFS(a, b);
+        // assertEquals(result, null);
+    }
+
+    // test lca function when there exists no path between the nodes
+    @Test
+    public void testNoLcaDag() {
+
+    }
+
+    // test lca function when the lca is one of the selected nodes
+    @Test
+    public void testNodeIsLcaDAG() {
 
     }
 
