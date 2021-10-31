@@ -96,7 +96,7 @@ public class Graph {
 
     }
 
-    // returns the range minnimum query which from the euler tour
+    // returns the range minnimum query which from the euler tour is used to find the LCA.
     static int RMQ(int arr[], int lwr, int uppr) {
         if (arr == null || arr.length == 0 || lwr == uppr || lwr < 0 || uppr < 0)
             return -1;
